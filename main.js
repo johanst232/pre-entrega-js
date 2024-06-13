@@ -1,15 +1,41 @@
 
-let cantidad;
-const drog1={nombre:"clonazepam",precio:"5000"};
-const drog2={nombre:"tussi",precio:"25000"};
-const drog3={nombre:"porro",precio:"8000"};
-const drog4={nombre:"rolitas",precio:"10000"};
-const drog5={nombre:"keta",precio:"20000"};
+let cant;
+let comprafinalizada = "no";
+const mensaje ={}
+const carrito=[
+    {nombre:"clonazepam",cantidad:0,precio:5000},
+    {nombre:"tussi",cantidad:0,precio:25000},
+    {nombre:"porro",cantidad:0,precio:8000},
+    {nombre:"rolitas",cantidad:0,precio:10000},
+    {nombre:"keta",cantidad:0,precio:20000},
+]
+const compraPrecio=[]
 
-function preciototal(cant,precios){
-    let precio=cant*precios;
-    alert("el total a pagar es=" + precio + "\n gracias por su compra." )
-}  
+
+function carrBusc(nam, cant){
+
+    const resultado = carrito.find((curso) => curso.nombre == nam);
+    resultado.cantidad+=cant;
+console.log(resultado);
+
+const eliminarArt = (nombre) => {
+    carrito.forEach((carr, index) => {
+    if (carr.nombre == nombre) {
+    carrito.splice(index, 1);
+    }
+    });
+};
+    eliminarArt(nam)
+    carrito.push(resultado)
+console.log(carrito)
+}
+function finalizarVenta(){
+    compraPrecio.forEach((carr) =>{
+    mensaje += compraPrecio.toString()
+    })
+}
+
+
 
 alert("hola bienvenido a la farmacia");
 let check=prompt("Eres policia?")
@@ -17,33 +43,51 @@ if(check=="si" || check=="SI" ){
     alert("Que tenga un buen dia oficial, aqui no esta sucediendo nada ilegal")
 }
 else if(check=="no" || check=="NO"){
-alert("bienvenido a tu dealer de cofiaza, que te tienta hoy?")
+    
+    alert("bienvenido a tu dealer de cofiaza, que te tienta hoy?")
+
+    while (comprafinalizada=="no"){
+
 let droga=prompt("las drogas con las que contamos hoy son: \n -clonazepam \n -tussi \n -porro \n -rolitas \n -keta");
 
 switch(droga){
     case "clonazepam":
-    cantidad=prompt("cuantas pastillas desea comprar?");
-    preciototal(cantidad,drog1.precio);
+    cant=prompt("cuantas pastillas desea comprar?");
+        carrBusc("clonazepam",parseInt(cant))
     break;
     case "tussi":
     cantidad=prompt("cuantas gramos desea comprar?");
-    preciototal(cantidad,drog2.precio); 
+        carrBusc("tussi",parseInt(cant))
     break;
     case "porro":
     cantidad=prompt("cuantas gramos desea comprar?");
-    preciototal(cantidad,drog3.precio);
+        carrBusc("porro",parseInt(cant))
     break;
     case "rolitas":
     cantidad=prompt("cuantas pastillas desea comprar?");
-    preciototal(cantidad,drog4.precio);
+    carrBusc("rolitas",parseInt(cant))
     break;
     case "keta":
     cantidad=prompt("cuantas gramos desea comprar?");
-    preciototal(cantidad,drog5.precio);
+    carrBusc("keta",parseInt(cant))
     break;
     default:
         alert("lo que solicita no tenemos en stock")
 };
+
+let seguir=prompt("desea seguir comprando \n -si \n -no")
+if(seguir=="no"){
+    comprafinalizada="si"
+}
+    }
+    const compraFinal = carrito.filter((carr) => carr.cantidad != 0);
+    console.log(compraFinal) 
+        compraFinal.forEach((car)=>{
+            car.cantidad*=car.precio
+            compraPrecio.push({nombre:car.nombre,precio:car.cantidad}) 
+        });
+        finalizarVenta() 
+
 
 } else{
     alert("la respuesta no es correcta asi que asumo que sos policia boton, gorrudo")
