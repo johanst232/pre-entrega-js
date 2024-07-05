@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+        background-color: #2b231d;
+}
+.menu{
+font-size: 60px !important;
+}
+.menu p{
+    color:aliceblue;
+}
