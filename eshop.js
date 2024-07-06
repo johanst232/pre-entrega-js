@@ -108,9 +108,10 @@ const actualizarContador5 = () => {
 };
 
 btnCompra.addEventListener('click', () => {
-    localStorage.setItem('1',JSON.stringify(contador1));
-    localStorage.setItem('2',JSON.stringify(contador2));
-    localStorage.setItem('3',JSON.stringify(contador3));
-    localStorage.setItem('4',JSON.stringify(contador4));
-    localStorage.setItem('5',JSON.stringify(contador5));
+    localStorage.setItem('porro',JSON.stringify(contador1));
+    localStorage.setItem('keta',JSON.stringify(contador2));
+    localStorage.setItem('tussi',JSON.stringify(contador3));
+    localStorage.setItem('rolitas',JSON.stringify(contador4));
+    localStorage.setItem('clonazepam',JSON.stringify(contador5));
 });
+
