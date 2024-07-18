@@ -15,6 +15,9 @@ const btnDisminuir5 = document.querySelector('.bt10');
 const resultado5 = document.querySelector('#resultado5');
 const container = document.querySelector('.container');
 const btnCompra = document.querySelector('.compra');
+const gotot = () => {
+    window.location.href="./total.html"
+};
 
 let contador1 = 0;
 let contador2 = 0;
@@ -108,10 +111,39 @@ const actualizarContador5 = () => {
 };
 
 btnCompra.addEventListener('click', () => {
-    localStorage.setItem('porro',JSON.stringify(contador1));
+    if(contador1 != 0 || contador2 != 0 || contador3 != 0 || contador4 != 0 || contador5 != 0) {
+        localStorage.setItem('porro',JSON.stringify(contador1));
     localStorage.setItem('keta',JSON.stringify(contador2));
     localStorage.setItem('tussi',JSON.stringify(contador3));
     localStorage.setItem('rolitas',JSON.stringify(contador4));
     localStorage.setItem('clonazepam',JSON.stringify(contador5));
+    Swal.fire({
+        title: "COMPRA REALIZADA CON EXITO",
+        width: 600,
+        padding: "3em",
+        color: "#000000",
+        showConfirmButton: false,
+        background: "#fff url(./fotos/drugs.jpg)",
+        backdrop:
+         `
+          rgba(0,0,123,0.4)
+          url("./fotos/cat.gif")
+          left top
+          no-repeat
+        `
+      });
+      setTimeout(gotot, 3000)
+    }else{
+        Swal.fire({
+            title: "¿NO COMPRAS NADA?",
+            text: "TAS RE DURO YA?",
+            icon: "warning",
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "SEGUIR COMPRANDO",
+        })
+    }
+
+    
 });
 
