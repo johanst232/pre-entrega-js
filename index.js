@@ -3,7 +3,8 @@
 const btnPol = document.querySelector('.botonP');
 const goshop = () => {
     window.location.href="./eshop.html"
-};const byeshop = () => {
+};
+const byeshop = () => {
     window.location.href="./despedida.html"
 };
 btnPol.addEventListener('click', () => {
@@ -17,7 +18,7 @@ btnPol.addEventListener('click', () => {
         confirmButtonText: "NO SOY POLICIA!",
         cancelButtonText: "SI SO POLICIA"
     }).then((result) => {
-        if (result.isConfirmed) {
+    if (result.isConfirmed) {
             Swal.fire({
             title: "BIENVENIDO!",
             text: "ESTIMADO CLIENTE.",
@@ -26,10 +27,9 @@ btnPol.addEventListener('click', () => {
         });
         setTimeout(goshop, 2000);
         }
-       else if (result.isDismissed) {
+    else if (result.isDismissed) {
             Swal.fire({
             title: "ASI TE QUERIA AGARRAR!",
-            /* text: "ESTAMOS ENCONTRANDO A TU POLICIA.", */
             icon: "error",
             showConfirmButton: false
         })

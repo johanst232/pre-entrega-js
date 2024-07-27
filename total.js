@@ -1,13 +1,19 @@
 const btnVolver = document.querySelector('.volver');
-const res = document.querySelector('#total');
+const res = document.querySelector('#totalArs');
+const resDol = document.querySelector('#totalDol');
+
 let totalComp = 0;
+let totalCompDol = 0;
 let text = '';
+
+
+const prod2=[];
 const productos = [
-    { nombre: "clonazepam", cantidad: 0, precio: 5000 },
-    { nombre: "tussi", cantidad: 0, precio: 25000 },
-    { nombre: "porro", cantidad: 0, precio: 8000 },
-    { nombre: "rolitas", cantidad: 0, precio: 10000 },
-    { nombre: "keta", cantidad: 0, precio: 20000 },
+    { nombre: "clonazepam", cantidad: 0, precio: 3.50 },
+    { nombre: "tussi", cantidad: 0, precio: 17.50 },
+    { nombre: "porro", cantidad: 0, precio: 5.60 },
+    { nombre: "rolitas", cantidad: 0, precio: 7.00 },
+    { nombre: "keta", cantidad: 0, precio: 14.00 },
 ]
 const carrito = [];
 function facturacion (){
@@ -30,8 +36,15 @@ const impresion = () => {
             carrito.push({nombre: data, precio:cant * resultado.precio})
         }
 
-        res.textContent = "Total a pagar = " + totalComp
-    }
+fetch("https://dolarapi.com/v1/dolares/blue")
+.then(response => response.json())
+.then(data => {
+    totalCompDol = data.venta * totalComp
+    
+    resDol.textContent = "Total a pagar en pesos = " + Math.round(totalCompDol);
+});
+    res.textContent = "Total a pagar en dolares = " + totalComp
+}
     console.log(carrito);
 
 }
