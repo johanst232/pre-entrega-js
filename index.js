@@ -2,10 +2,10 @@
 /* const Swal = require('sweetalert2') */
 const btnPol = document.querySelector('.botonP');
 const goshop = () => {
-    window.location.href="./eshop.html"
+    window.location.href = "./eshop.html"
 };
 const byeshop = () => {
-    window.location.href="./despedida.html"
+    window.location.href = "./despedida.html"
 };
 btnPol.addEventListener('click', () => {
     Swal.fire({
@@ -18,23 +18,23 @@ btnPol.addEventListener('click', () => {
         confirmButtonText: "NO SOY POLICIA!",
         cancelButtonText: "SI SO POLICIA"
     }).then((result) => {
-    if (result.isConfirmed) {
+        if (result.isConfirmed) {
             Swal.fire({
-            title: "BIENVENIDO!",
-            text: "ESTIMADO CLIENTE.",
-            icon: "success",
-            showConfirmButton: false
-        });
-        setTimeout(goshop, 2000);
+                title: "BIENVENIDO!",
+                text: "ESTIMADO CLIENTE.",
+                icon: "success",
+                showConfirmButton: false
+            });
+            setTimeout(goshop, 2000);
         }
-    else if (result.isDismissed) {
+        else if (result.isDismissed) {
             Swal.fire({
-            title: "ASI TE QUERIA AGARRAR!",
-            icon: "error",
-            showConfirmButton: false
-        })
-        setTimeout(byeshop, 2000);
+                title: "ASI TE QUERIA AGARRAR!",
+                icon: "error",
+                showConfirmButton: false
+            })
+            setTimeout(byeshop, 2000);
 
-        } 
+        }
     });
 });

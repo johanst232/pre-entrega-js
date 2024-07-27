@@ -18,14 +18,14 @@ const btnCompra = document.querySelector('.compra');
 const precDol = document.querySelector('#precDol');
 
 const gotot = () => {
-    window.location.href="./total.html"
+    window.location.href = "./total.html"
 };
 
 fetch("https://dolarapi.com/v1/dolares/blue")
-.then(response => response.json())
-.then(data => {
-    precDol.textContent = data.venta;
-});
+    .then(response => response.json())
+    .then(data => {
+        precDol.textContent = data.venta;
+    });
 
 let contador1 = 0;
 let contador2 = 0;
@@ -40,10 +40,10 @@ btnAumentar1.addEventListener('click', () => {
 });
 
 btnDisminuir1.addEventListener('click', () => {
-if (contador1 > 0) {
-    contador1--
-    actualizarContador1();
-}
+    if (contador1 > 0) {
+        contador1--
+        actualizarContador1();
+    }
 });
 
 const actualizarContador1 = () => {
@@ -57,10 +57,10 @@ btnAumentar2.addEventListener('click', () => {
 });
 
 btnDisminuir2.addEventListener('click', () => {
-if (contador2 > 0) {
-    contador2--
-    actualizarContador2();
-}
+    if (contador2 > 0) {
+        contador2--
+        actualizarContador2();
+    }
 });
 
 const actualizarContador2 = () => {
@@ -74,10 +74,10 @@ btnAumentar3.addEventListener('click', () => {
 });
 
 btnDisminuir3.addEventListener('click', () => {
-if (contador3 > 0) {
-    contador3--
-    actualizarContador3();
-}
+    if (contador3 > 0) {
+        contador3--
+        actualizarContador3();
+    }
 });
 
 const actualizarContador3 = () => {
@@ -91,10 +91,10 @@ btnAumentar4.addEventListener('click', () => {
 });
 
 btnDisminuir4.addEventListener('click', () => {
-if (contador4 > 0) {
-    contador4--
-    actualizarContador4();
-}
+    if (contador4 > 0) {
+        contador4--
+        actualizarContador4();
+    }
 });
 
 const actualizarContador4 = () => {
@@ -108,10 +108,10 @@ btnAumentar5.addEventListener('click', () => {
 });
 
 btnDisminuir5.addEventListener('click', () => {
-if (contador5 > 0) {
-    contador5--
-    actualizarContador5();
-}
+    if (contador5 > 0) {
+        contador5--
+        actualizarContador5();
+    }
 });
 
 const actualizarContador5 = () => {
@@ -119,29 +119,29 @@ const actualizarContador5 = () => {
 };
 
 btnCompra.addEventListener('click', () => {
-    if(contador1 != 0 || contador2 != 0 || contador3 != 0 || contador4 != 0 || contador5 != 0) {
-    localStorage.setItem('porro',JSON.stringify(contador1));
-    localStorage.setItem('keta',JSON.stringify(contador2));
-    localStorage.setItem('tussi',JSON.stringify(contador3));
-    localStorage.setItem('rolitas',JSON.stringify(contador4));
-    localStorage.setItem('clonazepam',JSON.stringify(contador5));
-    Swal.fire({
-        title: "COMPRA REALIZADA CON EXITO",
-        width: 600,
-        padding: "3em",
-        color: "#000000",
-        showConfirmButton: false,
-        background: "#fff url(./fotos/drugs.jpg)",
-        backdrop:
-        `
+    if (contador1 != 0 || contador2 != 0 || contador3 != 0 || contador4 != 0 || contador5 != 0) {
+        localStorage.setItem('porro', JSON.stringify(contador1));
+        localStorage.setItem('keta', JSON.stringify(contador2));
+        localStorage.setItem('tussi', JSON.stringify(contador3));
+        localStorage.setItem('rolitas', JSON.stringify(contador4));
+        localStorage.setItem('clonazepam', JSON.stringify(contador5));
+        Swal.fire({
+            title: "COMPRA REALIZADA CON EXITO",
+            width: 600,
+            padding: "3em",
+            color: "#000000",
+            showConfirmButton: false,
+            background: "#fff url(./fotos/drugs.jpg)",
+            backdrop:
+                `
         rgba(0,0,123,0.4)
         url("./fotos/cat.gif")
         left top
         no-repeat
         `
-    });
-    setTimeout(gotot, 3000)
-    }else{
+        });
+        setTimeout(gotot, 3000)
+    } else {
         Swal.fire({
             title: "¿NO COMPRAS NADA?",
             text: "TAS RE DURO YA?",

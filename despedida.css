@@ -2,14 +2,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+
     background-size: cover;
 }
 
 body {
     background-image: url(./fotos/despedida.png) !important;
 }
-div p{
+
+div p {
     font-size: 30px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     /* font-weight: 300; */
@@ -24,7 +25,8 @@ div p{
     height: 115px;
     width: 550px;
 }
-div a{
+
+div a {
     margin-left: 252px;
     height: 40px;
     width: 550px;

@@ -7,7 +7,7 @@ let totalCompDol = 0;
 let text = '';
 
 
-const prod2=[];
+const prod2 = [];
 const productos = [
     { nombre: "clonazepam", cantidad: 0, precio: 3.50 },
     { nombre: "tussi", cantidad: 0, precio: 17.50 },
@@ -16,13 +16,13 @@ const productos = [
     { nombre: "keta", cantidad: 0, precio: 14.00 },
 ]
 const carrito = [];
-function facturacion (){
+function facturacion() {
     for (var i = 0; i < carrito.length; i++) {
-        if (carrito[i].nombre != "total"){
-            text += '<li class="list-group-item">'+carrito[i].nombre + " = " +carrito[i].precio+'</li>';
+        if (carrito[i].nombre != "total") {
+            text += '<li class="list-group-item">' + carrito[i].nombre + " = " + carrito[i].precio +" USD"+'</li>';
         }
-        
-}
+
+    }
     document.getElementById("ulListado").innerHTML = text;
 }
 const impresion = () => {
@@ -30,21 +30,21 @@ const impresion = () => {
         const data = localStorage.key(i)
         const cant = parseInt(localStorage.getItem(data))
         const resultado = productos.find((art) => art.nombre == data);
-        
+
         if (cant > 0) {
             totalComp += cant * resultado.precio;
-            carrito.push({nombre: data, precio:cant * resultado.precio})
+            carrito.push({ nombre: data, precio: cant * resultado.precio })
         }
 
-fetch("https://dolarapi.com/v1/dolares/blue")
-.then(response => response.json())
-.then(data => {
-    totalCompDol = data.venta * totalComp
-    
-    resDol.textContent = "Total a pagar en pesos = " + Math.round(totalCompDol);
-});
-    res.textContent = "Total a pagar en dolares = " + totalComp
-}
+        fetch("https://dolarapi.com/v1/dolares/blue")
+            .then(response => response.json())
+            .then(data => {
+                totalCompDol = data.venta * totalComp
+
+                resDol.textContent = "Total a pagar en pesos = " + Math.round(totalCompDol) + " ARS";
+            });
+        res.textContent = "Total a pagar en dolares = " + totalComp + " USD";
+    }
     console.log(carrito);
 
 }
@@ -52,5 +52,6 @@ impresion();
 facturacion();
 
 btnVolver.addEventListener('click', () => {
-localStorage.clear();
+    localStorage.clear();
 });
+
