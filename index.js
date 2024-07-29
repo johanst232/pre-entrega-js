@@ -1,5 +1,3 @@
-/* import Swal from 'sweetalert2' */
-/* const Swal = require('sweetalert2') */
 const btnPol = document.querySelector('.botonP');
 const goshop = () => {
     window.location.href = "./eshop.html"
@@ -16,7 +14,7 @@ btnPol.addEventListener('click', () => {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "NO SOY POLICIA!",
-        cancelButtonText: "SI SO POLICIA"
+        cancelButtonText: "SI SOY POLICIA"
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({

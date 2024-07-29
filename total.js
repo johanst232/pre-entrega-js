@@ -5,6 +5,8 @@ const resDol = document.querySelector('#totalDol');
 let totalComp = 0;
 let totalCompDol = 0;
 let text = '';
+let numConPtos = 0;
+const noTruncarDecimales = {maximumFractionDigits: 20};
 
 
 const prod2 = [];
@@ -39,12 +41,12 @@ const impresion = () => {
         fetch("https://dolarapi.com/v1/dolares/blue")
             .then(response => response.json())
             .then(data => {
-                totalCompDol = data.venta * totalComp
-
-                resDol.textContent = "Total a pagar en pesos = " + Math.round(totalCompDol) + " ARS";
+                totalCompDol = Math.round(data.venta * totalComp) 
+                numConPtos  = totalCompDol.toLocaleString('es', noTruncarDecimales);
+                resDol.textContent = "Total a pagar en pesos = " + numConPtos + " ARS";
             });
         res.textContent = "Total a pagar en dolares = " + totalComp + " USD";
-    }
+    }   
     console.log(carrito);
 
 }
